@@ -13,18 +13,32 @@ class FirstViewController: UIViewController {
     @IBOutlet var Command : UILabel
     @IBOutlet var Comment : UITextView
     
+    @IBOutlet var loadingLabel : UILabel
+    @IBOutlet var loadingIndicator : UIActivityIndicatorView = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         var bgColor = UIColor(patternImage: UIImage(named: "5sbackground.jpg"))
         self.view.backgroundColor = bgColor
         
+        resetUI()
+        
         let singleFingerTap = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
         self.view.addGestureRecognizer(singleFingerTap)
         
-        getNextVimTip()
+        getVimTip()
         
-         }
+    }
+    
+    func resetUI() {
+        self.loadingIndicator.hidden = false
+        self.loadingIndicator.startAnimating()
+        self.loadingLabel.hidden = false
+        
+        self.Command.text = nil
+        self.Comment.text = nil
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -32,36 +46,45 @@ class FirstViewController: UIViewController {
     
     func handleSingleTap(recognizer: UITapGestureRecognizer) {
         println("Tapped!")
-        getNextVimTip()
-    }
-    
-    func getNextVimTip() {
-        
-        var dict = getVimTip()
-        
-        Command.text = dict["content"] as String
-        Comment.text = dict["comment"] as String
+      
+        resetUI()
+        getVimTip()
     }
     
     func getVimTip() -> NSDictionary {
+        let manager = AFHTTPRequestOperationManager()
+        let url = "http://vim-tips.com/random_tips.json"
         
-        var url = NSURL.URLWithString("http://vim-tips.com/random_tips.json")
-        var request = NSURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: NSTimeInterval(10))
-        var received = NSURLConnection.sendSynchronousRequest(request, returningResponse: nil, error: nil)
+        var dict: NSDictionary
+        dict = NSDictionary()
+
+        manager.GET(url,
+            parameters: nil,
+            success: { (operation: AFHTTPRequestOperation!,
+                responseObject: AnyObject!) in
+                println("JSON: " + responseObject.description!)
+                
+                dict = responseObject as NSDictionary
+                
+                println(dict["content"])
+                println(dict["comment"])
+                
+                self.loadingIndicator.hidden = true
+                self.loadingIndicator.stopAnimating()
+                self.loadingLabel.hidden = true
+                
+                self.Command.text = dict["content"] as String
+                self.Comment.text = dict["comment"] as String
+            },
+            failure: { (operation: AFHTTPRequestOperation!,
+                error: NSError!) in
+                println("Error: " + error.localizedDescription)
+
+                self.loadingLabel.hidden = true
+                self.loadingLabel.text = "Error: " + error.localizedDescription
+            })
         
-        var err: NSErrorPointer = nil
-        var dict: NSDictionary = NSJSONSerialization.JSONObjectWithData(received, options: NSJSONReadingOptions.MutableLeaves, error: err) as NSDictionary
-        
-        println(dict["content"])
-        println(dict["comment"])
-        
-        var arr : Int[]
-        
-        arr = Int[]()
-        
-        arr.append(3)
-        
-        return dict
+       return dict
     }
 }
 
