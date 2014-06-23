@@ -13,6 +13,8 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        var bgColor = UIColor(patternImage: UIImage(named: "5sbackground.jpg"))
+        self.view.backgroundColor = bgColor
     }
 
     override func didReceiveMemoryWarning() {
