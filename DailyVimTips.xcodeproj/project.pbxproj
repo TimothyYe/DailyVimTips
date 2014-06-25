@@ -15,6 +15,7 @@
 		1C2D710B193E02AD00C17520 /* DailyVimTipsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2D710A193E02AD00C17520 /* DailyVimTipsTests.swift */; };
 		1C8C4B2F19460E3A00450B7B /* 5sbackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1C8C4B2E19460E3A00450B7B /* 5sbackground.jpg */; };
 		1C8C4B31194612B000450B7B /* 4sbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C8C4B30194612B000450B7B /* 4sbackground.png */; };
+		1CDF375F195B08FA0097A9D3 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1CDF375E195B08FA0097A9D3 /* background.jpg */; };
 		8E1AEBFDC5A140F88961AB62 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF22D2BE47141D1B718FCC9 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		1C8C4B2E19460E3A00450B7B /* 5sbackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5sbackground.jpg; sourceTree = "<group>"; };
 		1C8C4B30194612B000450B7B /* 4sbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4sbackground.png; sourceTree = "<group>"; };
 		1C9868ED1958809400D2DED4 /* DailyVimTips-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DailyVimTips-Bridging-Header.h"; sourceTree = "<group>"; };
+		1CDF375E195B08FA0097A9D3 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
 		5CF22D2BE47141D1B718FCC9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CFBDC5AC1D64A77AA1B46EE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,6 +90,7 @@
 		1C2D70F2193E02AD00C17520 /* DailyVimTips */ = {
 			isa = PBXGroup;
 			children = (
+				1CDF375E195B08FA0097A9D3 /* background.jpg */,
 				1C8C4B30194612B000450B7B /* 4sbackground.png */,
 				1C8C4B2E19460E3A00450B7B /* 5sbackground.jpg */,
 				1C2D70F5193E02AD00C17520 /* AppDelegate.swift */,
@@ -219,6 +222,7 @@
 				1C8C4B31194612B000450B7B /* 4sbackground.png in Resources */,
 				1C8C4B2F19460E3A00450B7B /* 5sbackground.jpg in Resources */,
 				1C2D70FD193E02AD00C17520 /* Main.storyboard in Resources */,
+				1CDF375F195B08FA0097A9D3 /* background.jpg in Resources */,
 				1C2D70FF193E02AD00C17520 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
