@@ -16,6 +16,29 @@ class FirstViewController: UIViewController {
     @IBOutlet var loadingLabel : UILabel
     @IBOutlet var loadingIndicator : UIActivityIndicatorView = nil
     
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.becomeFirstResponder()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.resignFirstResponder()
+        super.viewWillAppear(animated)
+    }
+    
+    override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent!) {
+        if motion == UIEventSubtype.MotionShake {
+            println("Shaked!")
+            
+            resetUI()
+            getVimTip()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
